@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men page</title>
+</head>
+<style>
+    #container{
+        display: flex;
+        justify-content: center;
+        line-height: 5px;
+        /* border: 4px solid red; */
+        padding: 20px;
+        
+    }
+    #subdiv{
+        /* border: 4px solid red; */
+        height: 50vh;
+        width: 25%;
+        justify-content: center;
+        margin: 30px;
+    }
+    #container >div>div{
+        display: flex;
+        margin-top: -10px;
+        width: 95%;
+        /* border: 4px solid red; */
+    }
+    #subdiv img{
+        height: 70%;
+        align-items: center;
+        text-align: center;
+    }
+    #priceBox h3+h4{
+        text-decoration: line-through;
+    }
+    #dis{
+        columns: green;
+    }
+    #priceBox>h3{
+        padding-right: 5px;
+        /* border: 2px solid green; */
+    }
+
+</style>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+     var mensData = [
+    {
+      image_url:
+      "https://assetscdn1.paytm.com/images/catalog/product/A/AP/APPPAUSE-BLACK-PAUS57747861200F37/1562877340930_1..jpg?imwidth=320&impolicy=hq",
+      name1: "Pause",
+      name: "Men Cotton Long Sleeves Shrug",
+      price:  359,
+      strikedoffprice:  1499,
+      
+    },
+    {
+      image_url:
+        "https://assetscdn1.paytm.com/images/catalog/product/A/AP/APPJUBINATION-SJERS295568BD3913AD/1562955990957_0..jpg?imwidth=320&impolicy=hq",
+        name1: "JUBINATION",
+      name: "Men Wool Sleeveless Sweater Pack Of 1",
+      price: 799,
+      strikedoffprice: 1499,
+    },]
+
+    displayProducts();
+
+function displayProducts(){
+  mensData.map(function(elem,index){
+  var Div = document.createElement("div")
+  Div.setAttribute("id", "subdiv")
+
+  var image = document.createElement("img")
+  image.setAttribute("src", elem.image_url)
+
+  var Name1 = document.createElement("h4")
+  Name1.textContent = elem.name1
+
+  var Name = document.createElement("h4")
+  Name.textContent = elem.name
+
+  var MRP = document.createElement("h4")
+  MRP.textContent = "₹"+elem.strikedoffprice
+
+  var finalPrice = document.createElement("h3")
+  finalPrice.textContent = "₹"+elem.price
+   
+  var discount = document.createElement("h4")
+  discount.textContent = "%"  
+  discount.setAttribute("id", "dis")
+// // ((finalPrice*100)/MRP-100)+
+  var priceBox = document.createElement("div")
+  priceBox.append(finalPrice, MRP, discount)
+  priceBox.setAttribute("id","priceBox")
+
+  Div.append(image, Name1, Name, priceBox)
+   
+  document.getElementById("container").append(Div)
+  })
+  }
+</script>
